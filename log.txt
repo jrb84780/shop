@@ -1,0 +1,38 @@
+size: 2
+size: 2
+size: 2
+size: 3
+size: 2
+size: 2
+size: 2
+size: 2
+size: 21
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0
+size: 1 0 cheese
+size: 1 0 cheese
+size: 1 0 cheese
+size: 3 1 cheesepepperonisausagebaconhampeppers
+size: 3 1 cheesepepperonisausagebaconhampeppers
+size: 3 1 cheesepepperonibaconpeppers
+size: 3 1 cheesepepperonibaconpeppers
+size: 3 1 cheesepepperonibaconpeppers
+size: 3 1 cheesepepperonibaconpeppers
+size: 3 1  cheese pepperoni bacon peppers
+size: 1 0  cheese
+size: 3 0  cheese sausage
+size: 3 0  cheese
+size: 3 0  cheese peppers
+size: 1 0  cheese
