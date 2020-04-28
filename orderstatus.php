@@ -1,41 +1,47 @@
-<?php
-// Initialize the session
+<?php 
 session_start();
-if (!isset($_SESSION["loggedin"])) {
-    header("location: index.php");
-    exit;
+if(!isset($_SESSION['loggedin'])){
+  header("location: ./index.php");
 }
-require_once "config.php";
+require_once "./config.php";
 $userid = $_SESSION['userid'];
-?>
+$time = $hours = $minutes = 0;
 
-<!DOCTYPE html>
+   $sql = "SELECT * FROM jb_orders WHERE userid = :userid AND order_complete IS NULL";
+   if ($stmt = $pdo->prepare($sql)) {
+   $stmt->bindParam(":userid", $param_userid, PDO::PARAM_STR);
+   $param_userid = $userid;
+   $stmt->execute();
+   if ($stmt->rowCount() > 0) {
+       while ($row = $stmt->fetch()) {
+         $time++;
+       }
+   }
+}
+$time = $time * 10;
+if( $time > 59){
+      $hours = floor($time / 60);
+      $minutes = ($time % 60);
+      $wait_time = 'Hours: ' . $hours . ' and ' . $minutes . ' Minutes';
+} else { 
+  $wait_time =  $time . ' Minutes';
+}
+?>
 <html>
 <head>
 	<title>Admin</title>
 	<meta charset="utf-8">
-
-  <link rel="stylesheet" type="text/css" href="shop.css">
-  <style>
-      .order_list {
-        border-radius: 15px;
-        background: gray;
-        padding: 20px;
-        width: 10%;
-        height: 10%;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-  </style>
+  <link rel="stylesheet" type="text/css" href="style/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="style/datetimepicker_css.js"></script>
 </head>
 <body>
+  <div class="main-image">
   <div class="topnav">
    <a href="index.php">Home</a>
    <a href="order.php">Order</a>
    <?php if(isset($_SESSION['loggedin'])){?>
-     <a class="active" href="orderstatus.php">Order Status</a>
+     <a class="active" href="orderlist.php">Order Status</a>
      <a href="logout.php">Logout</a>
    <?php }  ?>
    <?php if(isset($_SESSION['isAdmin'])){?><a href="admin.php">Admin</a><?php }  ?>
@@ -43,30 +49,20 @@ $userid = $_SESSION['userid'];
      <a href="login.php">Login</a>
    <?php }  ?>
   </div>
-  <div class="container">
+
+    
+  <div id="orderlistForm" class="oModal">
      <br>
-          <!-- This first section is to query the database for username,avatar, and online status-->
-           <?php
-              $count = 0;
-              $sql = "SELECT * FROM jb_orders WHERE userid = :userid";
-              if ($stmt = $pdo->prepare($sql)) {
-              $stmt->bindParam(":userid", $param_userid, PDO::PARAM_STR);
-              $param_userid = $userid;
-              $stmt->execute();
-              if ($stmt->rowCount() > 0) {
-                  while ($row = $stmt->fetch()) {
-                      ?>
-                      <div class="col-md-2" style="border-radius:20px;padding-bottom:50px;background-color: grey;margin: 10px;height:10%; width:10%; display: flex; align-items: center; justify-content: center;">
-                         <p><?php echo $row['orderid'];?>
-                         <?php echo $_SESSION['username']?>
-                         <?php echo $row['order_time'] ?></p>
-                      </div>
+     <div id="regForm" style="overflow: auto;">
+     <center>
 
-                     <?php
-                  }
-              }
-          }?>
-         </div>
-
+           
+                       <h3>Order Complete<h3>
+                         <p>Your current wait time is: <?php echo $wait_time ;?></p>
+      
+      </center>
+       </div>
+       </div>
+   </div>
 </body>
 </html>

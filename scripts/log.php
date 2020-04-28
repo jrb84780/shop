@@ -1,27 +1,17 @@
 
 <?php
-session_start();
-if (!isset($_POST["log"])) {
-    header("location: ../index.php");
-    exit;
+$columnName = array();
+$data= array();
+$i = 0;
+$log = "\n";
+foreach ($_POST as $key => $value) {
+    $columnName[$i] = $key;
+    $data[$i] .= "'$value',";
+    $log .= $columnName[$i] . ": " . $data[$i];
+    $i++;
 }
-$POSTvaluesToCheck = array('cheese', 'pepperoni', 'sausage', 'bacon', 'ham', 'peppers');
-$results = array();
-$cheese = $pepperoni = $sausage = $bacon = $ham = $peppers = $x = 0;
-$array = "";
+$log .= "\n";
 
-foreach($POSTvaluesToCheck as $key) {
-  if(isset($_POST[$key])) {
-    $results[$x] = $key;
-    $x++;
-  }
-}
-
-foreach($results as $value) {
-    $array .= $value;
-}
-
-$log = "size: " . $_POST["size"] . " " . $pepperoni . " ". $array ."\n" ;
 $file = '../log.txt';
 // Open the file to get existing content
 $current = file_get_contents($file);
@@ -29,6 +19,6 @@ $current = file_get_contents($file);
 $current .= $log;
 // Write the contents back to the file
 file_put_contents($file, $current);
-//header("location: ../orderstatus.php");
-unset($results);
+echo "success";
+exit();
 ?>

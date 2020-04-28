@@ -21,7 +21,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["isAdmin"] == 0) {
    <a href="index.php">Home</a>
    <a href="order.php">Order</a>
    <?php if(isset($_SESSION['loggedin'])){?>
-     <a href="orderstatus.php">Order Status</a>
+     <a href="orderlist.php">Order Status</a>
      <a href="logout.php">Logout</a>
    <?php }  ?>
    <?php if(isset($_SESSION['isAdmin'])){?><a class="active" href="admin.php">Admin</a><?php }  ?>
