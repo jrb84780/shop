@@ -1,11 +1,12 @@
 <?php
 // Initialize the session
 session_start();
-if(isset($_SESSION['loggedin'])){
-  echo '<script>var loggedin = "true"; </script>';
+if (isset($_SESSION['loggedin'])) {
+    echo '<script>var loggedin = "true"; </script>';
 } else {
-  echo '<script>var loggedin = "false"; </script>';
+    echo '<script>var loggedin = "false"; </script>';
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,6 @@ if(isset($_SESSION['loggedin'])){
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style/index.css">
-    <link rel="stylesheet" type="text/css" href="style/form.css">
     <style>
         .small {
             background-position: center;
@@ -39,24 +39,40 @@ if(isset($_SESSION['loggedin'])){
           vertical-align:top;
         }
     </style>
+    <script>
+    //Validateion
+    $(document).ready(function() {
+      $('#specialInstr').keyup(function(event){
+        
+    });
+    function validate(){
+      var nameReg = "";
+    }
+});
+  //  [A-Za-z0-9 _.,!"'/$]*
+
+    </script>
 </head>
 
 <body>
-  <div class="main-image">
-    <div id="topnav" class="topnav">
-        <a href="index.php">Home</a>
-        <a class="active" href="order.php">Order</a>
-        <?php if(isset($_SESSION['loggedin'])){?>
-            <a href="orderstatus.php">Order Status</a>
-            <a href="logout.php">Logout</a>
-            <?php }  ?>
-                <?php if(isset($_SESSION['isAdmin'])){?><a href="admin.php">Admin</a>
-                    <?php }  ?>
-                        <?php if(!isset($_SESSION['loggedin'])){?>
-                            <a id="loginLink" href="javascript:login()">Login</a>
-                            <a id="registerLink" href="javascript:register()">Register</a>
-                            <?php }  ?>
-    </div>
+
+  <div class="topnav">
+   <a href="index.php">Home</a>
+   <a class="active" href="order.php">Order</a>
+   <?php if (isset($_SESSION['loggedin'])) {?>
+     <a href="orderstatus.php">Order Status</a>
+     <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {?>
+     <a href="orderlist.php">Order List</a>
+     <a href="statistics.php">Statistics</a>
+     <?php }  ?>
+     <a href="logout.php">Logout</a>
+   <?php }  ?>
+   <?php if (!isset($_SESSION['loggedin'])) {?>
+     
+     <a id="registerLink" href="javascript:register()">Register</a>
+   <?php
+ } ?>
+  </div>
 
     <form id="regForm" action="scripts/submit.php" method="post">
         <!-- One "tab" for each step in the form: -->
@@ -159,7 +175,7 @@ if(isset($_SESSION['loggedin'])){
             <center>
               <h2>Special instructions</h2>
               <p id="failureSpecial" style="color:red;" hidden>Invalid input please do not type any special characters</p>
-              <p><textarea class="specialInstr" name='inst' oninput="this.className = ''" rows="4" cols="50"></textarea></p>
+              <textarea id="specialInstr" class="specialInstr" name='inst' oninput="this.className = ''" rows="6" cols="100"></textarea>
             </center>
         </div>
 
@@ -168,10 +184,10 @@ if(isset($_SESSION['loggedin'])){
             <center>
             <h3 id="loginHeader">Please login to Finish Order</h3>
             <p id="failureLogin" style="color:red;" hidden>Invalid username or password</p>
-            <input id=username class="username" oninput="this.className = ''" placeholder="Username" type="text" name="username" class="input">
-            <input id=password class="password" oninput="this.className = ''" placeholder="Password" type="password" name="password" class="input">
+            <input id=username class="username" placeholder="Username" type="text" name="username" class="input">
+            <input id=password class="password" placeholder="Password" type="password" name="password" class="input">
             <button id="loginButton" type="button">Login</button>
-            <a id="noAccount" href="javascript:register()">Sign up now</a>
+            <a id="noAccount" class="modalRegisterLink" href="javascript:register()">Sign up now</a>
           </center>
           </div>
         </div>
@@ -190,7 +206,7 @@ if(isset($_SESSION['loggedin'])){
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
-          <input type="text" id="runningTot" name="bill" readonly value="" style="border: 0; font-size: 20px; "></input></p>
+          <input type="text" id="runningTot" name="bill" readonly value="" style="border: 0; font-size: 20px; display:none;"></input></p>
         </div>
 
     </form>
@@ -215,9 +231,9 @@ if(isset($_SESSION['loggedin'])){
   </form>				
 </div>
 </div>
-
+<!--
 <div id="loginLinkForm" class="olModal">
-  <!-- Modal content -->
+   Modal content
   <div id="regForm">
     <form>
       <a id="close" class="close"  href="javascript:close()">&times;</a>
@@ -225,14 +241,14 @@ if(isset($_SESSION['loggedin'])){
         <center>
           <h3 id="loginHeader">Login</h3>
           <p id="failureLogin" style="color:red;" hidden>Invalid username or password</p>
-          <input id=username class="username" type="text" placeholder="Username" name="username" class="input">
-          <input id=password class="password" type="password" placeholder="Password" name="password" class="input">
+          <input id=lLusername class="username" type="text" placeholder="Username" name="username" class="input">
+          <input id=lLpassword class="password" type="password" placeholder="Password" name="password" class="input">
           <button id="loginLinkBtn" type="button">Login</button>
-          <a id="noAccount" href="javascript:login()">Sign up now</a>
+          <a id="noAccount" class="modalRegisterLink" href="javascript:register()">Sign up now</a>
         </center>
     </form>				
 </div>
-</div>
+-->
 </body>
 
 </html>
@@ -250,7 +266,6 @@ showTab(currentTab); // Display the current tab
     $("#loginButton").on('click', function() {;
         var user = $('#username').val();
         var pass = $('#password').val();
-        var postStatus = "";
         $.post("scripts/login.php", {
                 username: user,
                 password: pass,
@@ -261,6 +276,7 @@ showTab(currentTab); // Display the current tab
                     $("#topnav").load(location.href + " #topnav");
                     $("#loggedIn").replaceWith("<center><h2>Total</h2> Your total is: $" + total + "</center>");
                     document.getElementById("nextBtn").style.display = "block";
+                    document.getElementById("nextBtn").innerHTML = "Submit Order";
 
                 } else {
                     failureLogin.style.display = "block";
@@ -396,6 +412,16 @@ showTab(currentTab); // Display the current tab
 		    e.preventDefault();
 		    return false;
 		});
+    
+    $('#lLusername').keypress(function (e) {
+        var regex = new RegExp("^[a-zA-Z0-9]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        e.preventDefault();
+        return false;
+    });
 		
 		$('#username').keypress(function (e) {
 				var regex = new RegExp("^[a-zA-Z0-9]+$");
@@ -407,27 +433,6 @@ showTab(currentTab); // Display the current tab
 				return false;
 		});
     
-    $("#loginLinkBtn").on('click', function() {;
-        var user = $('#username').val();
-        var pass = $('#password').val();
-        $.post("scripts/login.php", {
-                username: user,
-                password: pass,
-            })
-            .done(function(result, status, xhr) {
-                if (result == "success") {
-                    loggedin = "true";
-                    $("#topnav").load(location.href + " #topnav");
-                    $("#loggedIn").replaceWith("<center><h2>Total</h2> Your total is: $" + total + "</center>");
-                    document.getElementById("loginLinkForm").style.display = "none";
-                    document.getElementById("nextBtn").style.display = "block";
-
-                } else {
-                    failureLogin.style.display = "block";
-                }
-            });
-    
-    });
 		$("#registerBtn").on('click', function() {;
 					 var user = $('#rUsername').val();
 					 var pass = $('#rPassword').val();
@@ -435,7 +440,7 @@ showTab(currentTab); // Display the current tab
 					 $.post("scripts/register.php", {
 									 username: user,
 									 password: pass,
-									 cPassword: cPass
+									 cPassword: cPass,
 							 })
 							 .done(function(result, status, xhr) {
 								 
@@ -483,9 +488,6 @@ window.onclick = function(event) {
 	}
 }
 
-function login() {
-   olModal.style.display = "block";
-}
 function register() {
    orModal.style.display = "block";
 }

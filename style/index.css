@@ -1,5 +1,15 @@
 body,
 html {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://cs.ucmo.edu/~hje61500/pep.png");
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-right: -4px; /*COMPENSATES THE VERTICAL SCROLLBAR*/
+  overflow-x: hidden; /*REMOVES HORIZONTAL SCROLLBAR THE ABOVE CREATES*/
+  margin-top: 0px; /*COMPENSATES THE HORIZONTAL SCROLLBAR*/
   background-color:#383838;
   font-size: 28px;
   height: 100%;
@@ -50,6 +60,42 @@ input[type=text], input[type=password] {
   border-radius: 10px;
 }
 
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #F3031B;
+}
+
 .lModal, .olModal, .orModal, .rModal, .cModal, .dModal{
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -87,6 +133,21 @@ input[type=text], input[type=password] {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  text-decoration:none;
+}
+
+.modalRegisterLink {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+.modalRegisterLink:hover,
+.modalRegisterLink:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .close:hover,
@@ -137,15 +198,6 @@ input[type=text], input[type=password] {
   flex: 50%;
 }
 
-.main-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://cs.ucmo.edu/~hje61500/pep.png");
-  height: 100%;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
 
 .body-text {
   text-align: center;
@@ -215,4 +267,38 @@ li a {
 }
 .toppingTD{
   vertical-align:top;
+}
+
+#confirmBox
+{
+    display: none;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    position: fixed;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    padding: 6px 8px 8px;
+    box-sizing: border-box;
+    text-align: center;
+}
+#confirmBox button {
+    background-color: #ccc;
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    padding: 2px;
+    text-align: center;
+    width: 80px;
+    cursor: pointer;
+}
+#confirmBox button:hover
+{
+    background-color: #ddd;
+}
+#confirmBox .message
+{
+    text-align: left;
+    margin-bottom: 8px;
 }

@@ -1,6 +1,7 @@
 <?php
 // Initialize the session
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -13,36 +14,32 @@ session_start();
 
 </head>
 <body >
+  
 	<div class="topnav">
-   <a class="active" href="index.php">Home</a>
+   <a href="index.php">Home</a>
    <a href="order.php">Order</a>
    <?php if (isset($_SESSION['loggedin'])) {?>
      <a href="orderstatus.php">Order Status</a>
-     <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {?>
+     <?php if (isset($_SESSION['isAdmin'])) {?>
      <a href="orderlist.php">Order List</a>
      <a href="statistics.php">Statistics</a>
      <?php }  ?>
      <a href="logout.php">Logout</a>
    <?php }  ?>
    <?php if (!isset($_SESSION['loggedin'])) {?>
-		 <a id="loginLink" href="javascript:login()">Login</a>
-		 <a id="registerLink" href="javascript:register()">Register</a>
+     <a href="login.php">Login</a>
    <?php 
  } ?>
   </div>
   
 	
-	
-    <div class="body-text">
-			<center>
-      <h1 style="padding:30px;text-align: center;">Welcome to Pizza Palace!</h1>
-      <button onclick="window.location.href = 'order.php';">Order Now</button>
-			<?php if (!isset($_SESSION['loggedin'])) {
-    echo '<button type="button" onclick="login()">Login</button>';
-} ?>
-		</center>
-    </div>
-  </div>
+
+       <div id="regForm" style="overflow: auto;">
+       <center>
+          <h3>Error invalid input</h3>
+        </center>
+      </div>
+  
 				<div id="loginForm" class="lModal">
 					<!-- Modal content -->
 					<div id="regForm">
@@ -55,11 +52,11 @@ session_start();
 			            <input id=username class="username" type="text" placeholder="Username" name="username" class="input">
 			            <input id=password class="password" type="password" placeholder="Password" name="password" class="input">
 			            <button id="loginBtn" type="button">Login</button>
-			            <a id="noAccount" class="modalRegisterLink" href="javascript:register()">Sign up now</a>
+			            <a id="noAccount" href="javascript:login()">Sign up now</a>
 								</center>
 						</form>				
 				</div>
-			</div>
+			
 			
 			<div id="registerForm" class="rModal">
 				<!-- Modal content -->
@@ -73,11 +70,12 @@ session_start();
 								<input id=rUsername class="username" type="text" placeholder="Username" name="username" class="input" required>
 								<input id=rPassword class="password" type="password" placeholder="Password" name="password" class="input">
 								<input id=rcPassword class="password" type="password" placeholder="Password" name="password" class="input">
-								<button id="registerBtn" type="button">Create Account</button>
+								<button id="registerBtn" type="button">Login</button>
 							</center>
 					</form>				
 			</div>
 		
+    
 </body>
 </html>
 <script>

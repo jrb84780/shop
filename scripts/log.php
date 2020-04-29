@@ -1,12 +1,12 @@
-
 <?php
+
 $columnName = array();
-$data= array();
+$data = array();
 $i = 0;
 $log = "\n";
 foreach ($_POST as $key => $value) {
     $columnName[$i] = $key;
-    $data[$i] .= "'$value',";
+    $data[$i] = "'".$value."'";
     $log .= $columnName[$i] . ": " . $data[$i];
     $i++;
 }
@@ -19,6 +19,3 @@ $current = file_get_contents($file);
 $current .= $log;
 // Write the contents back to the file
 file_put_contents($file, $current);
-echo "success";
-exit();
-?>

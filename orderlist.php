@@ -1,11 +1,12 @@
 <?php
 // Initialize the session
 session_start();
-if (!isset($_SESSION["loggedin"])) {
+if (isset($_SESSION["loggedin"]) && $_SESSION["isAdmin"] == 0) {
     header("location: index.php");
     exit;
 }
 require_once "config.php";
+
 $userid = $_SESSION['userid'];
 ?>
 
@@ -16,7 +17,7 @@ $userid = $_SESSION['userid'];
 	<meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="style/index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="style/datetimepicker_css.js"></script>
+  
 </head>
 <style>
 table { 
@@ -75,23 +76,22 @@ only screen and (max-width: 1100px),
 }
 </style>
 <body>
-  <div class="main-image">
+  
   <div class="topnav">
    <a href="index.php">Home</a>
    <a href="order.php">Order</a>
-   <?php if(isset($_SESSION['loggedin'])){?>
-     <a class="active" href="orderlist.php">Order Status</a>
+   <?php if (isset($_SESSION['loggedin'])) {?>
+     <a href="orderstatus.php">Order Status</a>
+     <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {?>
+     <a class="active" href="orderlist.php">Order List</a>
+     <a href="statistics.php">Statistics</a>
+     <?php }  ?>
      <a href="logout.php">Logout</a>
-   <?php }  ?>
-   <?php if(isset($_SESSION['isAdmin'])){?><a href="admin.php">Admin</a><?php }  ?>
-   <?php if(!isset($_SESSION['loggedin'])){?>
-     <a href="login.php">Login</a>
    <?php }  ?>
   </div>
 
     
-  <div id="orderlistForm" class="oModal">
-     <br>
+
      <div id="regForm" style="overflow: auto;">
      <center>
        <table class="pricing" border=1 frame=void rules=rows style="height:100%;width:100%;" >
@@ -107,96 +107,52 @@ only screen and (max-width: 1100px),
            <?php
               
               
-              $sql = "SELECT * FROM jb_orders WHERE userid = :userid Order By orderid Desc";
+              $sql = "SELECT * FROM jb_orders Order By orderid Desc";
               if ($stmt = $pdo->prepare($sql)) {
-              $stmt->bindParam(":userid", $param_userid, PDO::PARAM_STR);
-              $param_userid = $userid;
-              $stmt->execute();
-              if ($stmt->rowCount() > 0) {
-                  while ($row = $stmt->fetch()) {
-                      ?>
-                       <tr data-href="<?php echo $row['orderid'];?>">
-                         <td><?php echo $row['orderid'];?></td>
-                         <td><?php echo $_SESSION['username']?></td>
-                         <td><?php echo $row['bill'];?></td>
-                         <td colspan = "2"><?php echo date('g:ia - m/j/y',strtotime($row['order_time'])); ?></td>
-                         <td id="cookedID"><?php if($row['order_cooked'] != ""){echo date('g:ia - m/j/y',strtotime($row['order_cooked']));} else {echo '<button id="autoCooked" type="button" value="'. $row["orderid"] .'">Cooked</button>';} ?></td>
-                         <td id="completeID"><?php if($row['order_complete'] != ""){echo date('g:ia - m/j/y',strtotime($row['order_complete']));} else {echo '<button id="autoComplete" type="button" value="'. $row["orderid"] .'">Complete</button>';} ?></td>
-                         <td id="viewID"><button id="view" type="button" onclick="viewOrder(<?php echo $row['orderid'];?>)">View</button></td>
+                  $stmt->bindParam(":userid", $param_userid, PDO::PARAM_STR);
+                  $param_userid = $userid;
+                  $stmt->execute();
+                  if ($stmt->rowCount() > 0) {
+                      while ($row = $stmt->fetch()) {
+                          ?>
+                       <tr data-href="<?php echo $row['orderid']; ?>">
+                         <td><?php echo $row['orderid']; ?></td>
+                         <td><?php echo $row['username']?></td>
+                         <td><?php echo $row['bill']; ?></td>
+                         <td colspan = "2"><?php echo date('g:ia - m/j/y', strtotime($row['order_time'])); ?></td>
+                         <td id="cookedID"><?php if ($row['order_cooked'] != "") {
+                              echo date('g:ia - m/j/y', strtotime($row['order_cooked']));
+                          } else {
+                              echo '<button id="autoCooked" type="button" onclick="autoCooked('. $row["orderid"] .')">Cooked</button>';
+                          } ?></td>
+                         <td id="completeID"><?php if ($row['order_complete'] != "") {
+                              echo date('g:ia - m/j/y', strtotime($row['order_complete']));
+                          } else {
+                              echo '<button id="autoComplete" type="button" onclick="autoComplete('. $row["orderid"] .')">Complete</button>';
+                          } ?></td>
+                         <td id="viewID"><button id="view" type="button" onclick="viewOrder(<?php echo $row['orderid']; ?>)">View</button></td>
                        </tr>
 
                      <?php
+                      }
                   }
-              }
-          }?>
+              }?>
         </table>
       </center>
        </div>
-       </div>
-     
-     <div id="cookedForm" class="cModal">
-       <!-- Modal content -->
-       <div id="regForm">
-         <form>
-           <a id="close" class="close"  href="javascript:close()">&times;</a>
-           <br>
-             <center>
-               <div id=viewForm>
-              <h3>Order Details</h3>
-               <input type="Text" id="date" maxlength="25" size="25"/>
-               <img src="img/cal.gif" onclick="javascript:NewCssCal ('date','MMddyyyy','dropdown',true,'12')" style="cursor:pointer"/>
-               <button id="cooked" type="button">Cooked</button>
-               <button id="complete" type="button">Complete</button>
-               <div>
-             </center>
-         </form>				
-     </div>
+
    </div>
-   </div>
+ 
 </body>
 </html>
 <script>
 
-var orderid ="";
-var cModal = document.getElementById("cookedForm");
-var oModal = document.getElementById("orderlistForm");
-
-function viewOrder() {
-   oModal.style.display= "none";
-   document.getElementById("viewForm").innerHTML = "<?php
-            $count = 0;
-            $sql = "SELECT * FROM jb_orders WHERE userid = :userid Order By orderid Desc";
-            if ($stmt = $pdo->prepare($sql)) {
-            $stmt->bindParam(":userid", $param_userid, PDO::PARAM_STR);
-            $param_userid = $userid;
-            $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                while ($row = $stmt->fetch()) {
-                }
-            }
-        }?>" +
-        "<p>dsgdfg</p>"
-   cModal.style.display = "block";
-   
-}
-window.onclick = function(event) {
-  if (event.target == cModal) {
-    cModal.style.display = "none";
-    oModal.style.display= "block";
-  }
-	if (event.target == dModal) {
-		dModal.style.display = "none";
-    oModal.style.display= "block";
-	}
+function viewOrder(orderid) {
+      var orderid = 'orderview.php?orderid=' + orderid;
+      window.location = orderid;
 }
 
-function close() {
-  cModal.style.display = "none";
-  oModal.style.display= "block";
-}
-
-$("#autoCooked").on('click', function() {
-  orderid = $(this).attr('value');
+function autoCooked(orderid) {
   $.post("scripts/updateOrder.php", {
           order_cooked:"order_cooked",
           orderid: orderid,
@@ -204,10 +160,9 @@ $("#autoCooked").on('click', function() {
       .done(function(result, status, xhr) {
             window.location.href = "orderlist.php";
       });
-});
+}
 
-$("#autoComplete").on('click', function() {
-  orderid = $(this).attr('value');
+function autoComplete(orderid){
   $.post("scripts/updateOrder.php", {
           order_complete:"order_complete",
           orderid: orderid,
@@ -215,6 +170,6 @@ $("#autoComplete").on('click', function() {
       .done(function(result, status, xhr) {
             window.location.href = "orderlist.php";
       });
-});
-
+    }
+    
 </script>

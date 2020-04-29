@@ -1,43 +1,55 @@
 
-orderid: '54',
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
 
-orderid: '54',
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
 
-orderid: '54',
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
 
-orderid: '54',
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
 
-orderid: '54',
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
 
-orderid: '54',
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
 
-orderid: '54',
 
-order_cooked: 'order_cooked',orderid: '54',
 
-order_cooked: 'order_cooked',orderid: '54',
-UPDATE jb_orders SET ('order_cooked' = 08:17:43pm 26-04-2020) WHERE ('orderid' = 54)UPDATE jb_orders SET (54 = '08:20:05pm 26-04-2020') WHERE ('orderid' = 54)UPDATE jb_orders SET (order_cooked = '08:21:01pm 26-04-2020') WHERE ('orderid' = 54)UPDATE jb_orders SET order_cooked = timestamp WHERE 'orderid' = 55UPDATE jb_orders SET order_cooked = 2020-04-26 20:27:03 WHERE 'orderid' = 55UPDATE jb_orders SET order_cooked = '1970-01-01 00:00:00' WHERE 'orderid' = 55UPDATE jb_orders SET order_cooked = now() WHERE 'orderid' = 55UPDATE jb_orders SET order_cooked =  WHERE 'orderid' = 55UPDATE jb_orders SET order_cooked = NOW() WHERE 'orderid' = 55output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
-output:  jeramytester
+
+
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
+
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
+
+size: '3',peppers: '1',onions: '1',tomatoes: '1',date_cooked: '2020-04-28',time_cooked: '10:49:40',date_complete: '2020-04-28',time_complete: '10:51:58',
+
+
+
+
+
+
+
+size: '.3.',peppers: '.1.',onions: '.1.',tomatoes: '.1.',date_cooked: '.2020-04-28.',time_cooked: '.10:49:40.',date_complete: '.2020-04-28.',time_complete: '.10:51:58.',
+
+size: '.3.',peppers: '.1.',onions: '.1.',tomatoes: '.1.',date_cooked: '.2020-04-28.',time_cooked: '.10:49:40.',date_complete: '.2020-04-28.',time_complete: '.10:51:58.',
+
+size: '.3.',peppers: '.1.',onions: '.1.',tomatoes: '.1.',date_cooked: '.2020-04-28.',time_cooked: '.10:49:40.',date_complete: '.2020-04-28.',time_complete: '.10:51:58.',
+
+size: '.3.',peppers: '.1.',onions: '.1.',tomatoes: '.1.',date_cooked: '.2020-04-28.',time_cooked: '.10:49:40.',date_complete: '.2020-04-28.',time_complete: '.10:51:58.',
+
+size: '3'peppers: '1'onions: '1'tomatoes: '1'date_cooked: '2020-04-28'time_cooked: '10:49:40'date_complete: '2020-04-28'time_complete: '10:51:58'
+
+size: '3'peppers: '1'onions: '1'tomatoes: '1'date_cooked: '2020-04-28'time_cooked: '10:49:40'date_complete: '2020-04-28'time_complete: '10:51:58'
+
+size: '3'peppers: '1'onions: '1'tomatoes: '1'date_cooked: '2020-04-28'time_cooked: '10:49:40'date_complete: '2020-04-28'time_complete: '10:51:58'
+
+
+
+
+
+
+
+size: '3'peppers: '1'onions: '1'tomatoes: '1'date_cooked: '2020-04-28'time_cooked: '10:49:40'date_complete: '2020-04-28'time_complete: '10:51:58'
+
+size: '3'peppers: '1'onions: '1'tomatoes: '1'date_cooked: '2020-04-28'time_cooked: '10:49:40'date_complete: '2020-04-28'time_complete: '10:51:58'
+
+size: '3'peppers: '1'onions: '1'tomatoes: '1'date_cooked: '2020-04-28'time_cooked: '10:49:40'date_complete: '2020-04-28'time_complete: '10:51:58'
+UPDATE jb_orders SET (Array) WHERE (Array)UPDATE jb_orders SET () WHERE ('3', '1', '1', '1', '2020-04-28', '10:49:40', '2020-04-28', '10:51:58', '71')UPDATE jb_orders SET (size, peppers, onions, tomatoes, date_cooked, time_cooked, date_complete, time_complete, orderid) WHERE ('3', '1', '1', '1', '2020-04-28', '10:49:40', '2020-04-28', '10:51:58', '71')UPDATE jb_orders SET (size, peppers, onions, tomatoes, date_cooked, time_cooked, date_complete, time_complete, orderid) WHERE ('3', '1', '1', '1', '2020-04-28', '10:49:40', '2020-04-28', '10:51:58', '71')UPDATE jb_orders SET (size, peppers, onions, tomatoes, date_cooked, time_cooked, date_complete, time_complete) WHERE ('3', '1', '1', '1', '2020-04-28', '10:49:40', '2020-04-28', '10:51:58')UPDATE jb_orders SET (size, peppers, onions, tomatoes) WHERE ('3', '1', '1', '1')UPDATE jb_orders SET (size, peppers, onions, tomatoes) WHERE ('3', '1', '1', '1')UPDATE jb_orders SET (size, peppers, onions, tomatoes) WHERE ('3', '1', '1', '1')UPDATE jb_orders SET (tomatoes='1') WHERE orderid = 'orderid'UPDATE jb_orders SET (tomatoes='1') WHERE orderid = '71'UPDATE jb_orders SET (size='3'peppers='1'onions='1'tomatoes='1') WHERE orderid = '71'UPDATE jb_orders SET (size='3'peppers='1'onions='1'tomatoes='1') WHERE orderid = '71'UPDATE jb_orders SET (size='3'peppers='1'onions='1'tomatoes='1') WHERE orderid = '71'UPDATE jb_orders SET (size='3', peppers='1', onions='1', tomatoes='1') WHERE orderid = '71'UPDATE jb_orders SET (size='3', peppers='1', onions='1', tomatoes='1') WHERE orderid = '71'UPDATE jb_orders SET size='3', peppers='1', onions='1', tomatoes='1' WHERE orderid = '71'UPDATE jb_orders SET size='3', peppers='1', onions='1', tomatoes='1' WHERE orderid = '71'UPDATE jb_orders SET order_complete = NOW() WHERE orderid = 72UPDATE jb_orders SET order_complete = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET order_cooked = NOW() WHERE orderid = 72UPDATE jb_orders SET (size='1', bacon='1', tomatoes='1',order_cooked ='2020-04-28 14:45:03') WHERE orderid = '81'UPDATE jb_orders SET (size='1', bacon='1', tomatoes='1',order_cooked ='2020-04-28 14:45:03',order_cooked ='2020-04-28 14:45:03') WHERE orderid = '81'UPDATE jb_orders SET size='2', pepperoni='1', sausage='1', bacon='1', ham='1',order_cooked ='2020-04-28 14:52:35' WHERE orderid = '80'UPDATE jb_orders SET size='2', cheddar='1', mozzarella='1', ham='1', tomatoes='1',order_cooked ='2020-04-28 15:27:23',order_complete ='2020-04-28 15:27:23' WHERE orderid = '79'UPDATE jb_orders SET size='2', cheddar='1', mozzarella='1', ham='1', tomatoes='1',order_cooked ='2020-04-28 15:27:23',order_complete ='2020-04-28 15:27:23' WHERE orderid = '79'UPDATE jb_orders SET size='2', cheddar='1', mozzarella='1', ham='1', tomatoes='1',order_cooked ='2020-04-28 15:27:23',order_complete ='2020-04-28 15:27:23' WHERE orderid = '79'UPDATE jb_orders SET size='2', cheddar='1', mozzarella='1', ham='1', tomatoes='1',order_cooked ='2020-04-28 15:34:03',order_complete ='2020-04-28 15:34:03' WHERE orderid = '79'UPDATE jb_orders SET size='2', cheddar='1', mozzarella='1', ham='1', tomatoes='1' WHERE orderid = '79'UPDATE jb_orders SET size='2', cheddar='1', mozzarella='1', ham='1', tomatoes='1' WHERE orderid = '79'UPDATE jb_orders SET size='2', cheddar='1', mozzarella='1', ham='1', tomatoes='1',order_cooked ='2020-04-28 16:00:32' WHERE orderid = '79'UPDATE jb_orders SET size='2', cheddar='1', mozzarella='1', ham='1', tomatoes='1' WHERE orderid = '79'UPDATE jb_orders SET size='1', gouda='1', pepperoni='1', peppers='1', onions='1', ='', ='', ='', ='', bill='7.00' WHERE orderid = '105'UPDATE jb_orders SET size='3', cheddar='1', gouda='1', bacon='1', onions='1', ='', ='', ='', ='', bill='12.00' WHERE orderid = '101'UPDATE jb_orders SET size='3', cheddar='1', gouda='1', pepperoni='1', bacon='1', onions='1', bill='' WHERE orderid = '101'UPDATE jb_orders SET size='2', cheddar='1', gouda='1', pepperoni='1', sausage='1', bacon='1', onions='1', bill='' WHERE orderid = '101'UPDATE jb_orders SET size='2', cheddar='1', gouda='1', pepperoni='1', sausage='1', bacon='1', ham='1', onions='1', bill='' WHERE orderid = '101'UPDATE jb_orders SET size='2', cheddar='1', gouda='1', pepperoni='1', sausage='1', bacon='1', ham='1', chicken='1', onions='1' WHERE orderid = '101'UPDATE jb_orders SET size='2', cheddar='1', gouda='1', pepperoni='1', sausage='1', bacon='1', ham='1', onions='1',bill='10.50' WHERE orderid = '101'UPDATE jb_orders SET size='2', cheddar='1', gouda='1', pepperoni='1', sausage='1', bacon='1', ham='1', chicken='1', onions='1',bill='11.50',order_cooked ='2020-04-29 18:28' WHERE orderid = '101'UPDATE jb_orders SET size='2', cheddar='1', gouda='1', pepperoni='1', sausage='1', bacon='1', ham='1', chicken='1', onions='1',bill='11.50',order_complete ='2020-04-29 19:28' WHERE orderid = '101'
