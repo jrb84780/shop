@@ -174,13 +174,13 @@ $userid = $row['userid'];
 
             <tr>
               <td>Date:  <input type="date" id="date_cooked" name="date_cooked" value="<?php echo $cookedDate; ?>" min="2020-01-01"><br>
-               Time:  <input type="time" id="time_cooked" name="time_cooked" value="<?php echo $cookedTime; ?>" min="09:00" max="22:00"><br>
+               Time:  <input type="time" id="time_cooked" name="time_cooked" step="1" value="<?php echo $cookedTime; ?>" min="09:00" max="22:00"><br>
                <input type="checkbox" id="updateOrderCooked" name="updateOrderCooked" value="1">
                <label for="updateOrderCooked">Update Time</label>
             </td>
             <td></td>
               <td>Date:  <input type="date" id="date_complete" name="date_complete" value="<?php echo $completeDate; ?>" min="2020-01-01"><br>
-               Time:  <input type="time" id="time_complete" name="time_complete" value="<?php echo $completeTime; ?>" min="09:00" max="22:00"><br>
+               Time:  <input type="time" id="time_complete" name="time_complete" step="1" value="<?php echo $completeTime; ?>" min="09:00:00" max="22:00:00"><br>
                <input type="checkbox" id="updateOrderComplete" name="updateOrderComplete" value="1">
                <label for="updateOrderComplete">Update Time?</label>
             </td>

@@ -38,9 +38,9 @@ for ($i=0;$i<sizeof($data);$i++) {
 $columns = implode(", ", $index);
 $values = implode(", ", $data);
 
-$order_time = date("h:i:sa d-m-Y");
 
-$sql = "INSERT INTO jb_orders(userid,username,$columns) VALUES (:userid,:username,$values)";
+
+$sql = "INSERT INTO jb_orders(userid,username,$columns,order_time) VALUES (:userid,:username,$values,NOW())";
 
 if ($stmt = $pdo->prepare($sql)) {
     // Bind variables to the prepared statement as parameters

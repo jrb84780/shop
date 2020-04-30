@@ -120,12 +120,12 @@ only screen and (max-width: 1100px),
                          <td><?php echo $row['username']?></td>
                          <td><?php echo $row['bill']; ?></td>
                          <td colspan = "2"><?php echo date('g:ia - m/j/y', strtotime($row['order_time'])); ?></td>
-                         <td id="cookedID"><?php if ($row['order_cooked'] != "") {
+                         <td id="cookedID"><?php if ($row['order_cooked'] != "" || $row['order_cooked'] != null ) {
                               echo date('g:ia - m/j/y', strtotime($row['order_cooked']));
                           } else {
                               echo '<button id="autoCooked" type="button" onclick="autoCooked('. $row["orderid"] .')">Cooked</button>';
                           } ?></td>
-                         <td id="completeID"><?php if ($row['order_complete'] != "") {
+                         <td id="completeID"><?php if ($row['order_complete'] != "" || $row['order_cooked'] != null) {
                               echo date('g:ia - m/j/y', strtotime($row['order_complete']));
                           } else {
                               echo '<button id="autoComplete" type="button" onclick="autoComplete('. $row["orderid"] .')">Complete</button>';
@@ -153,6 +153,11 @@ function viewOrder(orderid) {
 }
 
 function autoCooked(orderid) {
+  hour = new Date();
+  if(hour.getHours() < 9 || hour.getHours() > 20){
+    alert("You are outside of business hours 9am-10pm \n Please do manual entry");
+    exit();
+  }
   $.post("scripts/updateOrder.php", {
           order_cooked:"order_cooked",
           orderid: orderid,
@@ -163,6 +168,11 @@ function autoCooked(orderid) {
 }
 
 function autoComplete(orderid){
+  hour = new Date('March 13, 08 8:20');
+  if(hour.getHours() < 9 || hour.getHours() > 20){
+    alert("You are outside of business hours 9am-10pm \n Please do manual entry");
+    exit();
+  }
   $.post("scripts/updateOrder.php", {
           order_complete:"order_complete",
           orderid: orderid,
