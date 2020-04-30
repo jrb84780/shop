@@ -56,7 +56,7 @@ $sql = "SELECT $sumCol FROM jb_orders";
       foreach ($colN as $key) {
           $total += $row[$key];
       }
-
+      
       foreach ($colN as $key) {
           $dataPoints[$count] = array("label"=> "$key", "y" => ($row[$key]/$total)*100);
           $count++;
@@ -112,8 +112,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	data: [{
 		type: "doughnut",
-		indexLabel: "{symbol} - {y}",
-		yValueFormatString: "#,##0.0\"%\"",
+		indexLabel: "{y}",
+		yValueFormatString: "#,##0.00\"%\"",
 		showInLegend: true,
 		legendText: "{label} : {y}",
 		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
