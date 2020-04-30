@@ -1,10 +1,10 @@
 <?php
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'shop');
-define('DB_PASSWORD', 'shop');
-define('DB_NAME', 'shop');
+define('DB_SERVER', 'www.math-cs.ucmo.edu');
+define('DB_USERNAME', 'cs4130_sp2020');
+define('DB_PASSWORD', 'tempPWD!');
+define('DB_NAME', 'cs4130_sp2020');
 
 /* Attempt to connect to MySQL database */
 try{

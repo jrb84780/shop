@@ -39,19 +39,6 @@ if (isset($_SESSION['loggedin'])) {
           vertical-align:top;
         }
     </style>
-    <script>
-    //Validateion
-    $(document).ready(function() {
-      $('#specialInstr').keyup(function(event){
-        
-    });
-    function validate(){
-      var nameReg = "";
-    }
-});
-  //  [A-Za-z0-9 _.,!"'/$]*
-
-    </script>
 </head>
 
 <body>
@@ -187,6 +174,8 @@ if (isset($_SESSION['loggedin'])) {
             <input id=username class="username" placeholder="Username" type="text" name="username" class="input">
             <input id=password class="password" placeholder="Password" type="password" name="password" class="input">
             <button id="loginButton" type="button">Login</button>
+            <p>Login as admin - Username: admin Password: tester</p>
+            <p>Login as user - Username: user1 Password: tester</p>
             <a id="noAccount" class="modalRegisterLink" href="javascript:register()">Sign up now</a>
           </center>
           </div>
@@ -231,24 +220,6 @@ if (isset($_SESSION['loggedin'])) {
   </form>				
 </div>
 </div>
-<!--
-<div id="loginLinkForm" class="olModal">
-   Modal content
-  <div id="regForm">
-    <form>
-      <a id="close" class="close"  href="javascript:close()">&times;</a>
-      <br>
-        <center>
-          <h3 id="loginHeader">Login</h3>
-          <p id="failureLogin" style="color:red;" hidden>Invalid username or password</p>
-          <input id=lLusername class="username" type="text" placeholder="Username" name="username" class="input">
-          <input id=lLpassword class="password" type="password" placeholder="Password" name="password" class="input">
-          <button id="loginLinkBtn" type="button">Login</button>
-          <a id="noAccount" class="modalRegisterLink" href="javascript:register()">Sign up now</a>
-        </center>
-    </form>				
-</div>
--->
 </body>
 
 </html>

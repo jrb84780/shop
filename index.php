@@ -55,6 +55,8 @@ session_start();
 			            <input id=username class="username" type="text" placeholder="Username" name="username" class="input">
 			            <input id=password class="password" type="password" placeholder="Password" name="password" class="input">
 			            <button id="loginBtn" type="button">Login</button>
+									<p>Login as admin - Username: admin Password: tester</p>
+									<p>Login as user - Username: user1 Password: tester</p>
 			            <a id="noAccount" class="modalRegisterLink" href="javascript:register()">Sign up now</a>
 								</center>
 						</form>				
