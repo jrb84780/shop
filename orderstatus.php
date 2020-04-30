@@ -38,7 +38,7 @@ if ($time > 59) {
 <head>
 	<title>Admin</title>
 	<meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="style/index.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   
 </head>

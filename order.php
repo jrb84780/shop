@@ -16,7 +16,7 @@ if (isset($_SESSION['loggedin'])) {
     <title>Admin</title>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style/index.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <style>
         .small {
             background-position: center;
@@ -42,66 +42,65 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
+    <div class="topnav">
+        <a href="index.php">Home</a>
+        <a class="active" href="order.php">Order</a>
+        <?php if (isset($_SESSION['loggedin'])) {?>
+        <a href="orderstatus.php">Order Status</a>
+        <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {?>
+        <a href="orderlist.php">Order List</a>
+        <a href="statistics.php">Statistics</a>
+        <?php }  ?>
+        <a href="logout.php">Logout</a>
+        <?php }  ?>
+        <?php if (!isset($_SESSION['loggedin'])) {?>
 
-  <div class="topnav">
-   <a href="index.php">Home</a>
-   <a class="active" href="order.php">Order</a>
-   <?php if (isset($_SESSION['loggedin'])) {?>
-     <a href="orderstatus.php">Order Status</a>
-     <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {?>
-     <a href="orderlist.php">Order List</a>
-     <a href="statistics.php">Statistics</a>
-     <?php }  ?>
-     <a href="logout.php">Logout</a>
-   <?php }  ?>
-   <?php if (!isset($_SESSION['loggedin'])) {?>
-     
-     <a id="registerLink" href="javascript:register()">Register</a>
-   <?php
+        <a id="registerLink" href="javascript:register()">Register</a>
+        <?php
  } ?>
-  </div>
+    </div>
 
     <form id="regForm" action="scripts/submit.php" method="post">
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
             <br>
             <center>
-              <h1>Build Your Pizza</h1>
+                <h1>Build Your Pizza</h1>
                 <div class="size-selector">
                     <table class="pricing">
-                      <tr>
-                        <th colspan="3">
-                          Select pizza size
-                        </th>
-                      <tr>
-                      <tr>
-                        <th>Small (10")</th>
-                        <th>Medium (12")</th>
-                        <th>Large (12")</th>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input id="small" class="small" type="radio" name="size" value="1"></input>
-                          <label style="background-size: 80px 80px;" class="size small" for="small"></label>
-                        </td>
-                        <td>
-                          <input id="medium" class="medium" type="radio" name="size" value="2"></input>
-                          <label style="background-size: 90px 90px;" class="size medium" for="medium"></label>
-                        </td>
-                        <td>
-                          <input id="large" class="large" type="radio" name="size" value="3" />
-                          <label style="background-size: 100px 100px;" class="size large" for="large"></label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="3">Small: Starts at $5</td>
-                      </tr>
-                      <tr>
-                        <td colspan="3">Medium: Starts at $7</td>
-                      </tr>
-                      <tr>
-                        <td colspan="3">Large: Starts at $10</td>
-                      </tr>
+                        <tr>
+                            <th colspan="3">
+                                Select pizza size
+                            </th>
+                            <tr>
+                                <tr>
+                                    <th>Small (10")</th>
+                                    <th>Medium (12")</th>
+                                    <th>Large (12")</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="small" class="small" type="radio" name="size" value="1" />
+                                        <label style="background-size: 80px 80px;" class="size small" for="small"></label>
+                                    </td>
+                                    <td>
+                                        <input id="medium" class="medium" type="radio" name="size" value="2" />
+                                        <label style="background-size: 90px 90px;" class="size medium" for="medium"></label>
+                                    </td>
+                                    <td>
+                                        <input id="large" class="large" type="radio" name="size" value="3" />
+                                        <label style="background-size: 100px 100px;" class="size large" for="large"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Small: Starts at $5</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Medium: Starts at $7</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Large: Starts at $10</td>
+                                </tr>
                     </table>
                     <p id="failureSize" style="color:red;" hidden>Please select a size</p>
                 </div>
@@ -113,46 +112,46 @@ if (isset($_SESSION['loggedin'])) {
                 <div>
                     <h2>Select Pizza Toppings</h2>
                     <table>
-                      <tr>
-                        <th colspan="3">
-                          Each topping is 50&#162;
-                        </th>
-                      <tr>
-                        <th>Cheeses</th>
-                        <th>Meats</th>
-                        <th>Veggies</th>
-                      </tr>
-                      <tr>
-                        <td class="toppingTD">
-                            <input type="checkbox" id="cheddar" name="cheddar" value="1">
-                            <label  for="cheddar">Cheddar</label><br>
-                            <input type="checkbox" id="mozzarella" name="mozzarella" value="1">
-                            <label  for="mozzarella">Mozzarella</label><br>
-                            <input type="checkbox" id="gouda" name="gouda" value="1">
-                            <label  for="gouda">Smoked gouda</label>
-                        </td>
-                        <td class="toppingTD">
-                            <input type="checkbox" id="pepperoni" name="pepperoni" value="1">
-                            <label  for="pepperoni">Pepperoni</label><br>
-                            <input type="checkbox" id="sausage" name="sausage" value="1">
-                            <label for="pepperoni">Sausage</label><br>
-                            <input type="checkbox" id="bacon" name="bacon" value="1">
-                            <label for="bacon">bacon</label><br>
-                            <input type="checkbox" id="ham" name="ham" value="1">
-                            <label for="ham">Ham</label><br>
-                            <input type="checkbox" id="chicken" name="chicken" value="1">
-                            <label  for="chicken">Chicken</label>
-                        </td>
-                        <td class="toppingTD">
-                          <input type="checkbox" id="peppers" name="peppers" value="1">
-                          <label for="peppers">Peppers</label><br>
-                          <input type="checkbox" id="onions" name="onions" value="1">
-                          <label for="onions">Onions</label><br>
-                          <input type="checkbox" id="tomatoes" name="tomatoes" value="1">
-                          <label for="tomatoes">Tomatoes</label>
+                        <tr>
+                            <th colspan="3">
+                                Each topping is 50&#162;
+                            </th>
+                            <tr>
+                                <th>Cheeses</th>
+                                <th>Meats</th>
+                                <th>Veggies</th>
+                            </tr>
+                            <tr>
+                                <td class="toppingTD">
+                                    <input type="checkbox" id="cheddar" name="cheddar" value="1">
+                                    <label for="cheddar">Cheddar</label><br>
+                                    <input type="checkbox" id="mozzarella" name="mozzarella" value="1">
+                                    <label for="mozzarella">Mozzarella</label><br>
+                                    <input type="checkbox" id="gouda" name="gouda" value="1">
+                                    <label for="gouda">Smoked gouda</label>
+                                </td>
+                                <td class="toppingTD">
+                                    <input type="checkbox" id="pepperoni" name="pepperoni" value="1">
+                                    <label for="pepperoni">Pepperoni</label><br>
+                                    <input type="checkbox" id="sausage" name="sausage" value="1">
+                                    <label for="pepperoni">Sausage</label><br>
+                                    <input type="checkbox" id="bacon" name="bacon" value="1">
+                                    <label for="bacon">bacon</label><br>
+                                    <input type="checkbox" id="ham" name="ham" value="1">
+                                    <label for="ham">Ham</label><br>
+                                    <input type="checkbox" id="chicken" name="chicken" value="1">
+                                    <label for="chicken">Chicken</label>
+                                </td>
+                                <td class="toppingTD">
+                                    <input type="checkbox" id="peppers" name="peppers" value="1">
+                                    <label for="peppers">Peppers</label><br>
+                                    <input type="checkbox" id="onions" name="onions" value="1">
+                                    <label for="onions">Onions</label><br>
+                                    <input type="checkbox" id="tomatoes" name="tomatoes" value="1">
+                                    <label for="tomatoes">Tomatoes</label>
 
-                        </td>
-                      </tr>
+                                </td>
+                            </tr>
                     </table>
                 </div>
             </center>
@@ -160,25 +159,25 @@ if (isset($_SESSION['loggedin'])) {
 
         <div class="tab">
             <center>
-              <h2>Special instructions</h2>
-              <p id="failureSpecial" style="color:red;" hidden>Invalid input please do not type any special characters</p>
-              <textarea id="specialInstr" class="specialInstr" name='inst' oninput="this.className = ''" rows="6" cols="100"></textarea>
+                <h2>Special instructions</h2>
+                <p id="failureSpecial" style="color:red;" hidden>Invalid input please do not type any special characters</p>
+                <textarea id="specialInstr" class="specialInstr" name='inst' oninput="this.className = ''" rows="6" cols="100"></textarea>
             </center>
         </div>
 
         <div id="loginRealTab" class="tab">
-          <div id="loggedIn">
-            <center>
-            <h3 id="loginHeader">Please login to Finish Order</h3>
-            <p id="failureLogin" style="color:red;" hidden>Invalid username or password</p>
-            <input id=username class="username" placeholder="Username" type="text" name="username" class="input">
-            <input id=password class="password" placeholder="Password" type="password" name="password" class="input">
-            <button id="loginButton" type="button">Login</button>
-            <p>Login as admin - Username: admin Password: tester</p>
-            <p>Login as user - Username: user1 Password: tester</p>
-            <a id="noAccount" class="modalRegisterLink" href="javascript:register()">Sign up now</a>
-          </center>
-          </div>
+            <div id="loggedIn">
+                <center>
+                    <h3 id="loginHeader">Please login to Finish Order</h3>
+                    <p id="failureLogin" style="color:red;" hidden>Invalid username or password</p>
+                    <input id=username class="username" placeholder="Username" type="text" name="username" class="input">
+                    <input id=password class="password" placeholder="Password" type="password" name="password" class="input">
+                    <button id="loginButton" type="button">Login</button>
+                    <p>Login as admin - Username: admin Password: tester</p>
+                    <p>Login as user - Username: user1 Password: tester</p>
+                    <a id="noAccount" class="modalRegisterLink" href="javascript:register()">Sign up now</a>
+                </center>
+            </div>
         </div>
 
         <div style="overflow:auto;">
@@ -195,35 +194,34 @@ if (isset($_SESSION['loggedin'])) {
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
-          <input type="text" id="runningTot" name="bill" readonly value="" style="border: 0; font-size: 20px; display:none;"></input></p>
+            <input type="text" id="runningTot" name="bill" readonly value="" style="border: 0; font-size: 20px; display:none;" />
         </div>
 
     </form>
-  </div>
-  
-<div id="registerLinkForm" class="orModal">
-<!-- Modal content -->
-<div id="regForm">
-  <form name="register">
-    <a id="close" class="close"  href="javascript:close()">&times;</a>
-    <br>
-      <center>
-        <div id="regStatus">
-        <h3>Register</h3>
-        <p id="error" style="color:red;" hidden></p>
-        <input id=rUsername class="username" type="text" placeholder="Username" name="username" class="input" required>
-        <input id=rPassword class="password" type="password" placeholder="Password" name="password" class="input">
-        <input id=rcPassword class="password" type="password" placeholder="Password" name="password" class="input">
-        <button id="registerBtn" type="button">Create Account</button>
+    
+
+    <div id="registerLinkForm" class="orModal">
+        <!-- Modal content -->
+        <div id="regForm">
+            <form name="register">
+                <a id="close" class="close" href="javascript:close()">&times;</a>
+                <br>
+                <center>
+                    <div id="regStatus">
+                        <h3>Register</h3>
+                        <p id="error" style="color:red;" hidden></p>
+                        <input id=rUsername class="username" type="text" placeholder="Username" name="username" class="input" required>
+                        <input id=rPassword class="password" type="password" placeholder="Password" name="password" class="input">
+                        <input id=rcPassword class="password" type="password" placeholder="Password" name="password" class="input">
+                        <button id="registerBtn" type="button">Create Account</button>
+                    </div>
+                </center>
+            </form>
         </div>
-      </center>
-  </form>				
-</div>
-</div>
+    </div>
 </body>
 
 </html>
-
 <script>
 //Variables used for calulating price
 var total = 0;
