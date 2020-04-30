@@ -1,5 +1,8 @@
 <?php
-
+if (isset($_SESSION["loggedin"]) && $_SESSION["isAdmin"] == 0) {
+    header("location: index.php");
+    exit;
+}
 $columnName = array();
 $data = array();
 $i = 0;

@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if (isset($_SESSION["loggedin"])) {
+    header("location: index.php");
+    exit;
+}
 $sizeCost = 0;
 $size = $_POST['size'];
 $numPizzas = $_POST['numPizzas'];

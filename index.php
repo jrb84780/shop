@@ -12,6 +12,7 @@ session_start();
 			</head>
 			<body >
 				<div class="topnav">
+					
 					<a class="active" href="index.php">Home</a>
 					<a href="order.php">Order</a>
 					<?php if (isset($_SESSION['loggedin'])) {?>
@@ -31,8 +32,7 @@ session_start();
 					<center>
 						<h1 style="padding:30px;text-align: center;">Welcome to Pizza Palace!</h1>
 						<button onclick="window.location.href = 'order.php';">Order Now</button>
-						<?php if (!isset($_SESSION['loggedin'])) {
-    echo '<button type="button" onclick="login()">Login</button>';} ?>
+						<?php if (!isset($_SESSION['loggedin'])) { echo '<button type="button" onclick="login()">Login</button>';} ?>
 					</center>
 				</div>
 			</div>

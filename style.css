@@ -166,6 +166,7 @@ input.invalid {
   top: 0;
 }
 
+
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
@@ -189,10 +190,7 @@ input.invalid {
   background-color: #F3031B;
   color: white;
 }
-.pic{
-	height:200px;
-	width:300px;
-}
+
 
 .column {
   flex: 50%;
@@ -206,28 +204,6 @@ input.invalid {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-}
-
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  top: 0;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
 }
 
 

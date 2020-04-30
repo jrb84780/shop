@@ -73,13 +73,13 @@ $sql = "SELECT $sumCol FROM jb_orders";
             if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch()) {
                     if ($row['size'] == 1) {
-                        $sCount += $row['size'];
+                        $sCount += 1;
                     } elseif ($row['size'] == 2) {
-                        $mCount += $row['size'];
+                        $mCount += 1;
                     } elseif ($row['size'] == 3) {
-                        $lCount += $row['size'];
+                        $lCount += 1;
                     } else {
-                        $uCount += $row['size'];
+                        $uCount += 1;
                     }
                 }
             }
@@ -89,7 +89,7 @@ $sql = "SELECT $sumCol FROM jb_orders";
         $BarDataPoints[1] = array("y" => $mCount, "label"=> "Medium");
         $BarDataPoints[2] = array("y" => $lCount, "label"=> "Large");
         if ($uCount != 0) {
-            $BarDataPoints[3] = array("y" => $uCount, "label"=> "Large");
+            $BarDataPoints[3] = array("y" => $uCount, "label"=> "Promo");
         }
 
 

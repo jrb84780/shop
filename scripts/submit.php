@@ -1,7 +1,10 @@
 
 <?php
 session_start();
-
+if (isset($_SESSION["loggedin"])) {
+    header("location: index.php");
+    exit;
+}
 require_once "../config.php";
 
 $username = $_SESSION['username'];
