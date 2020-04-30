@@ -36,7 +36,7 @@ if ($time > 59) {
 
 <html>
 <head>
-	<title>Admin</title>
+	Pizza Shop</title>
 	<meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
